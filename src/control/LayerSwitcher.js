@@ -4,6 +4,7 @@
 */
 
 import ol from 'ol'
+import extent from 'ol/extent';
 import ol_control_Control from 'ol/control/control'
 import ol_layer_Tile from 'ol/layer/tile'
 import ol_layer_Vector from 'ol/layer/vector'
@@ -224,7 +225,7 @@ ol_control_LayerSwitcher.prototype.viewChange = function(e)
 			{	var ex0 = l.getExtent();
 				if (ex0)
 				{	var ex = map.getView().calculateExtent(map.getSize());
-					if (!ol.extent.intersects(ex, ex0)) 
+					if (!extent.intersects(ex, ex0)) 
 					{	$(this).addClass("ol-layer-hidden");
 					}
 					else $(this).removeClass("ol-layer-hidden");
@@ -284,7 +285,7 @@ ol_control_LayerSwitcher.prototype.testLayerVisibility = function(layer)
 		{	var ex0 = layer.getExtent();
 			if (ex0)
 			{	var ex = this.map_.getView().calculateExtent(this.map_.getSize());
-				return ol.extent.intersects(ex, ex0);
+				return extent.intersects(ex, ex0);
 			}
 			return true;
 		}
